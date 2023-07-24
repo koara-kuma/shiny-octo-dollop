@@ -21,7 +21,10 @@ help_command = commands.DefaultHelpCommand(
 
 client = commands.Bot(command_prefix = '!', help_command = help_command, intents= discord.Intents.all())
 
+@client.event
 async def on_ready():
+    activity = discord.Game(name=f"in {len(client.guilds)} servers", type=1)
+    await client.change_presence(status=discord.Status.idle, activity=activity)
     print(f"We have logged in as {client.user}")
 
 async def load():
