@@ -29,6 +29,13 @@ async def on_ready():
     await client.change_presence(status=discord.Status.idle, activity=activity)
     print(f"We have logged in as {client.user}")
 
+@client.event
+async def on_member_join(member):
+    embed = discord.Embed(title = f'Welcome to {member.guild.name}!')
+    embed.colour = discord.Colour.orange()
+    embed.description = f'Welcome {member.mention} to {member.guild.name} hope you enjoy your stay and remember to follow the rules :heart:'
+    await member.send(embed=embed)
+
 async def load():
     for filename in os.listdir("shiny-octo-dollop/cogs"):
         if filename.endswith(".py"):
