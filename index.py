@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-import random
 import json
 import os
 import asyncio
@@ -16,7 +15,10 @@ else:
         json.dump(configTemplate, f)
 
 help_command = commands.DefaultHelpCommand(
-    no_category = "Kasumi's commands"
+    hello_category = "Say hello to miloceo :)",
+    ping_category = "Check the bot's latency",
+    quote_category = "Quote a message",
+    no_category = "Help"
 )
 
 client = commands.Bot(command_prefix = '!', help_command = help_command, intents= discord.Intents.all())
@@ -41,7 +43,6 @@ async def main():
         await client.start(token)
 
 asyncio.run(main())
-
 
 
 
